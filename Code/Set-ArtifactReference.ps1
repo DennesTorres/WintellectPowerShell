@@ -187,14 +187,20 @@ https://github.com/Wintellect/WintellectPowerShell
             # Enumerate through the property keys.
             foreach ($newItem in $newMainProps.GetEnumerator())
             {
-                foeach($item in $mainProps)
+                
+                foreach($item in $mainProps)
                 {   
-                    if (($item.ArtifactReference -ne $null) -and ($item.ArtifactReference.Include.Contains($newItem.Key))
+                    if (-not [bool]($item.PSobject.Properties.name -match "ArtifactReference"))   { Continue }
+              #      if (-not ($item.ArtifactReference -is [Array]))  Continue
+                    foreach($ref in $item.ArtifactReference)
                     {
-                        ReplaceNode -document $fileXML `
-                                    -topElement $item `
-                                    -elementName "HintPath" `
-                                    -elementValue $newItem.Value
+                        if ($ref.Include.ToUpper().Contains($newItem.Key.ToUpper()))
+                        {
+                            ReplaceNode -document $fileXML `
+                                        -topElement $ref `
+                                        -elementName "HintPath" `
+                                        -elementValue $newItem.Value
+                         }
                      }
                 }
                 
