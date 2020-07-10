@@ -200,6 +200,8 @@ https://github.com/Wintellect/WintellectPowerShell
                                         -topElement $ref `
                                         -elementName "HintPath" `
                                         -elementValue $newItem.Value
+
+                            $ref.Include=$newItem.Value
                          }
                      }
                 }
