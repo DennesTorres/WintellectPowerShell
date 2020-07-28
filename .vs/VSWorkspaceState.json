@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Code"
   ],
+  "SelectedNode": "\\Code\\Set-ArtifactReference.ps1",
   "PreviewInSolutionExplorer": false
 }
