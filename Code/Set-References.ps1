@@ -6,7 +6,7 @@ function Set-References
     (
         [parameter(ValueFromPipeline, Mandatory=$true)]
         [System.IO.FileInfo[]] $Path,
-        [string[]] $CustomConfigurationProperties = @{},
+        [string[]] $CustomConfigurationProperties = @(),
         [parameter(Mandatory=$true)]
         [String]$DacpacFolder
     )
@@ -36,7 +36,7 @@ function Set-References
         if ($PSCmdlet.ShouldProcess($path, "Updating settings"))
         {
             Write-Verbose "Processing : $path"
-            ProcessProjectFile $path
+            Execute
         }
     }
     end
