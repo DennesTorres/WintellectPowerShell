@@ -20,8 +20,8 @@ function Set-References
 
             foreach ($newItem in $CustomConfigurationProperties)
             {
-                $Path= "$DacpacFolder\$newItem"
-                $newTable.Add($newItem,$Path)
+                $newPath= "$DacpacFolder\$newItem"
+                $newTable.Add($newItem,$newPath)
             }
             return $newTable;
         }
